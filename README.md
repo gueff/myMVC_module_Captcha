@@ -15,9 +15,22 @@ _adding a true type font file_
 
 ---
 
+## Install
+
+_cd into the modules folder of your myMVC3.2.x copy; e.g.:_   
+~~~bash
+cd /var/www/myMVC/modules/;
+~~~
+
+_clone `myMVC_module_Captcha` as `Captcha`_  
+~~~bash
+git clone https://github.com/gueff/myMVC_module_Captcha.git Captcha;
+~~~
+
+
 ## How to use
 
-_add the following route to your working Module_
+_add the following route to your primary working Module_
 ~~~php
 \MVC\Route::GET(
     '/captcha/',
