@@ -1,3 +1,4 @@
+**this myMCVC module provides a captcha image you could use in your own html forms.** 
 
 # Requirements
 
@@ -8,10 +9,10 @@
     - ZIP: https://github.com/gueff/myMVC/archive/refs/heads/3.2.x.zip
     - Doku: https://mymvc.ueffing.net/
 
-_adding a true type font file_
-- copy your licensed copy of a true type font like "Andale Mono" (`anadalemo.ttf`)
+_add a true type font file_
+- copy your licensed copy of a true type font like "Andale Mono" (example: `anadalemo.ttf`)
   into the root folder of this module
-- rename that file into `font.ttf`
+- rename that file to `font.ttf`
 
 ---
 
