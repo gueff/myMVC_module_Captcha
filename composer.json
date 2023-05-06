@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": {"Infotool": "Model/"},
+        "psr-0": {"Captcha": "Controller/"},
         "files": ["Controller/index.php"]
     }
 }
