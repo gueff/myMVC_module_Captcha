@@ -1,0 +1,23 @@
+{
+    "name": "gueff/mymvc_module_captcha",
+    "type": "module",
+    "description": "Captcha module for myMVC 3.2.x",
+    "keywords": ["infotool","mymvc"],
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://mymvc.ueffing.net/",
+    "require": {
+        "php": ">=7.4",
+        "gueff/mymvc": "3.2.5"
+    },
+    "authors": [
+        {
+            "name": "Guido K.B.W. Ueffing",
+            "email": "mymvc@ueffing.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {"Infotool": "Model/"},
+        "files": ["Controller/index.php"],
+    }
+}
