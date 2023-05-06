@@ -18,6 +18,6 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {"Infotool": "Model/"},
-        "files": ["Controller/index.php"],
+        "files": ["Controller/index.php"]
     }
 }
