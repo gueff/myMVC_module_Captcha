@@ -16,11 +16,11 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
-        "classmap": [
-            "Captcha/"
-        ]
+        "psr-0": {
+            "Captcha": ""
+        }
     },
-    "include-path": [
-        ""
-    ]
+    "config": {
+        "use-include-path": true
+    }
 }
