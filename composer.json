@@ -2,7 +2,7 @@
     "name": "gueff/mymvc_module_captcha",
     "type": "module",
     "description": "Captcha module for myMVC 3.2.x",
-    "keywords": ["infotool","mymvc"],
+    "keywords": ["mymvc","captcha"],
     "license": "GPL-3.0-or-later",
     "homepage": "https://mymvc.ueffing.net/",
     "require": {
@@ -16,8 +16,11 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": {
-            "Captcha": ""
-        }
-    }
+        "classmap": [
+            "Captcha/"
+        ]
+    },
+    "include-path": [
+        ""
+    ]
 }
