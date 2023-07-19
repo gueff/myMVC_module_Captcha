@@ -12,5 +12,6 @@ _phanlistcreate.sh
 Changelog.md
 andalemo.ttf
 font.ttf
+composer.lock
 **/*.min.css
 **/*.min.js
