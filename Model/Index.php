@@ -1,17 +1,12 @@
 <?php
-/**
- * Index.php
- *
- * @package myMVC
- * @copyright ueffing.net
- * @author Guido K.B.W. Üffing <info@ueffing.net>
- * @license GNU GENERAL PUBLIC LICENSE Version 3. See application/doc/COPYING
- */
 
 /**
  * @name $CaptchaModel
  */
 namespace Captcha\Model;
+
+use MVC\Debug;
+use MVC\Session;
 
 /**
  * Index
@@ -19,38 +14,92 @@ namespace Captcha\Model;
 class Index
 {
     /**
-     * Index constructor.
+     * @var string
      */
-	public function __construct ()
-	{
-		;
-	}
+    public static $sRoute = '/captcha/';
 
     /**
-     * @return void
+     * @var string char library
+     */
+    public static $sChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ1234567890";
+
+    /**
+     * default sanitizing rule matches to letters and numbers only
+     * @var string sanitize pattern
+     */
+    public static $sCharSanitizePattern = "/[^\\p{L}}\\p{N}']+/u";
+
+    /**
+     * @var string POST field name
+     */
+    public static $sPostFieldName = 'captcha';
+
+    /**
+     * @var string Session var name
+     */
+    public static $sSessionName = 'mymvc.captcha';
+
+    /**
+     * @var int
+     */
+    public static $iCaptchaTextLength = 5;
+
+    /**
+     * @return string
      * @throws \ReflectionException
      */
-    public static function createCaptchaText(int $iMax = 5)
+    public static function createCaptcha()
     {
-        $iMax = abs($iMax);
-        ($iMax <= 0 || $iMax > 10) ? $iMax = 5 : false;
-
-        // Captcha-Text erstellen
-        $sChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ1234567890";
+        // create captcha text
         $sText = "";
 
-        for ($i = 0; $i < $iMax; $i++)
+        for ($i = 0; $i < self::$iCaptchaTextLength; $i++)
         {
-            // Zufälligen Buchstaben auswählen
-            $char = $sChar[rand(0, strlen($sChar) - 1)];
-            $sText .= $char;
+            // choose random letters
+            $sChar = self::$sChar[rand(0, strlen(self::$sChar) - 1)];
+            $sText.= $sChar;
         }
+
+        Session::is()->set(
+            self::$sSessionName,
+            $sText
+        );
 
         return $sText;
     }
 
-	public function __destruct ()
-	{
-		;
-	}	
+    /**
+     * @return string captcha
+     * @throws \ReflectionException
+     */
+    public static function getCaptchaPost()
+    {
+        return (string) substr(
+            (string) preg_replace(
+                self::$sCharSanitizePattern,
+                '',
+                get($_POST[self::$sPostFieldName], ''))
+            ,
+            0,
+            strlen(Session::is()->get(self::$sSessionName))
+        );
+    }
+
+    /**
+     * @return string
+     * @throws \ReflectionException
+     */
+    public static function getCaptchaSession()
+    {
+        return Session::is()->get(self::$sSessionName);
+    }
+
+    /**
+     * @return bool valid
+     * @throws \ReflectionException
+     */
+    public static function captchaIsValid()
+    {
+        return (self::getCaptchaPost() === self::getCaptchaSession());
+    }
 }

@@ -45,7 +45,7 @@ class Index implements \MVC\MVCInterface\Controller
      */
 	public function index ()
     {
-        if (true === empty(Session::is()->get('mymvc.captcha')))
+        if (true === empty(Session::is()->get(\Captcha\Model\Index::$sSessionName)))
         {
             return false;
         }
@@ -62,7 +62,7 @@ class Index implements \MVC\MVCInterface\Controller
         $iColor = imagecolorallocate($oGdImage, 0, 0, 0);
 
         // get Text from Session
-        $sText = Session::is()->get('mymvc.captcha');
+        $sText = Session::is()->get(\Captcha\Model\Index::$sSessionName);
 
         for ($i = 0; $i < strlen($sText); $i++)
         {

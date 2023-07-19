@@ -1,10 +1,8 @@
 {
-    "name": "gueff/mymvc_module_captcha",
-    "type": "module",
-    "description": "Captcha module for myMVC 3.2.x",
-    "keywords": ["mymvc","captcha"],
+    "name": "gueff/captcha",
+    "description": "Captcha",
+    "keywords": ["captcha"],
     "license": "GPL-3.0-or-later",
-    "homepage": "https://mymvc.ueffing.net/",
     "require": {
         "php": ">=7.4"
     },
@@ -19,8 +17,5 @@
         "psr-0": {
             "Captcha": ""
         }
-    },
-    "config": {
-        "use-include-path": true
     }
 }
